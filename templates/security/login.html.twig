@@ -45,21 +45,27 @@
                                                 <h3>Authentification</h3>
                                             </div>
                                         </div>
-                                        <form>
+                                        
+                                        {% if app.session.get('BAD_CREDENTIALS') is not empty %}
+                                        <div class="alert alert-secondary" role="alert">{{ app.session.get('BAD_CREDENTIALS') }}</div>
+                                        {% endif %}
+
+                                        <form method="POST" action="{{path('login')}}">
                                             <div class="mb-3">
                                                 <label class="form-label" for="card-email">Email</label>
-                                                <input class="form-control" id="card-email" type="email" />
+                                                <input class="form-control" id="card-email" type="email" name="_email" value="{{ app.session.get('LAST_EMAIL') }}"/>
                                             </div>
                                             <div class="mb-3">
                                                 <div class="d-flex justify-content-between">
                                                     <label class="form-label" for="card-password">Mot de passe</label>
                                                 </div>
-                                                <input class="form-control" id="card-password" type="password" />
+                                                <input class="form-control" id="card-password" type="password" name="_password" />
+                                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('login_form') }}">
                                             </div>
                                             <div class="row flex-between-center">
                                                 <div class="col-auto">
                                                     <div class="form-check mb-0">
-                                                        <input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" />
+                                                        <input class="form-check-input" type="checkbox" id="card-checkbox" name="_remember_me" />
                                                         <label class="form-check-label mb-0" for="card-checkbox">Se souvenir de moi</label>
                                                     </div>
                                                 </div>

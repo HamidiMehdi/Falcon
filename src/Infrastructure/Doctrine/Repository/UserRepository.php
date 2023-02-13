@@ -38,4 +38,9 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
             $user->getUserFrom()
         );
     }
+
+    public function isEmailUnique(?string $email): bool
+    {
+        return $this->count(["email" => $email]) === 0;
+    }
 }
