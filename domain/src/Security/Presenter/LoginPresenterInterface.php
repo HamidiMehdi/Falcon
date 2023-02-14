@@ -1,8 +1,8 @@
 <?php
 
-namespace MHamidi\Filer\Domain\Security\Presenter;
+namespace MHamidi\Falcon\Domain\Security\Presenter;
 
-use MHamidi\Filer\Domain\Security\Response\LoginResponse;
+use MHamidi\Falcon\Domain\Security\Response\LoginResponse;
 
 interface LoginPresenterInterface
 {

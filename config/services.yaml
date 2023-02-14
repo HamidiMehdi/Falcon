@@ -20,7 +20,7 @@ services:
     App\UserInterface\:
         resource: '../src/UserInterface'
 
-    MHamidi\Filer\Domain\:
+    MHamidi\Falcon\Domain\:
         resource: '../domain/src'
 
     # controllers are imported separately to make sure services can be injected

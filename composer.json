@@ -57,13 +57,13 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "MHamidi\\Filer\\Domain\\": "domain/src/"
+            "MHamidi\\Falcon\\Domain\\": "domain/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/",
-            "MHamidi\\Filer\\Domain\\Tests\\": "domain/tests/"
+            "MHamidi\\Falcon\\Domain\\Tests\\": "domain/tests/"
         }
     },
     "replace": {

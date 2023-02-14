@@ -1,8 +1,8 @@
 <?php
 
-namespace MHamidi\Filer\Domain\Security\Response;
+namespace MHamidi\Falcon\Domain\Security\Response;
 
-use MHamidi\Filer\Domain\Security\Entity\User;
+use MHamidi\Falcon\Domain\Security\Entity\User;
 
 class LoginResponse
 {

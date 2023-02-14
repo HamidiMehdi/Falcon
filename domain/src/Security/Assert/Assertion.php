@@ -1,10 +1,10 @@
 <?php
 
-namespace MHamidi\Filer\Domain\Security\Assert;
+namespace MHamidi\Falcon\Domain\Security\Assert;
 
 use Assert\Assertion as BaseAssertion;
-use MHamidi\Filer\Domain\Security\Exception\NonUniqueEmailException;
-use MHamidi\Filer\Domain\Security\Gateway\UserGateway;
+use MHamidi\Falcon\Domain\Security\Exception\NonUniqueEmailException;
+use MHamidi\Falcon\Domain\Security\Gateway\UserGateway;
 
 class Assertion extends BaseAssertion
 {

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Filer{% endblock %}
+{% block filer_nav %}active{% endblock %}
+
+{% block body %}
+
+<div class="card overflow-hidden mb-3">
+    <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url({{ asset('build/images/icons/spot-illustrations/corner-4.png') }});"></div>
+    <div class="card-body position-relative">
+        <h3>Filer</h3>
+        <p>
+            Créer et navigué sur votre propore arborescence !
+        </p>
+        <nav style="--falcon-breadcrumb-divider: '»';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>App</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Filer</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+{% endblock %}

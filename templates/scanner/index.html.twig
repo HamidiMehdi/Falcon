@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scanner{% endblock %}
+{% block scanner_nav %}active{% endblock %}
+
+{% block body %}
+
+<div class="card overflow-hidden mb-3">
+    <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url({{ asset('build/images/icons/spot-illustrations/corner-4.png') }});"></div>
+    <div class="card-body position-relative">
+        <h3>Scanner</h3>
+        <p>
+            Importer vos fichiers .zip et visualisé leurs arborescences !
+        </p>
+        <nav style="--falcon-breadcrumb-divider: '»';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>App</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Scanner</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body overflow-hidden p-lg-6">
+        <div class="row align-items-center">
+        <div class="col-lg-6"><img class="img-fluid" src="../assets/img/icons/spot-illustrations/21.png" alt=""></div>
+        <div class="col-lg-6 ps-lg-4 my-5 text-center text-lg-start">
+            <h3 class="text-primary">Edit me!</h3>
+            <p class="lead">Create Something Beautiful.</p><a class="btn btn-falcon-primary" href="../documentation/getting-started.html">Getting started</a>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -2,10 +2,10 @@
 
 namespace App\Infrastructure\Security\Guard;
 
-use MHamidi\Filer\Domain\Security\Presenter\LoginPresenterInterface;
-use MHamidi\Filer\Domain\Security\Request\LoginRequest;
-use MHamidi\Filer\Domain\Security\Response\LoginResponse;
-use MHamidi\Filer\Domain\Security\UseCase\Login;
+use MHamidi\Falcon\Domain\Security\Presenter\LoginPresenterInterface;
+use MHamidi\Falcon\Domain\Security\Request\LoginRequest;
+use MHamidi\Falcon\Domain\Security\Response\LoginResponse;
+use MHamidi\Falcon\Domain\Security\UseCase\Login;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,8 +59,7 @@ class WebAuthenticator extends AbstractAuthenticator implements LoginPresenterIn
 
         $request->getSession()->set(self::LAST_EMAIL, $email);
 
-        $loginRequest = new LoginRequest($email, $password);
-        $this->login->execute($loginRequest, $this);
+        $this->login->execute(LoginRequest::create($email, $password), $this);
         if (!$this->response->getUser() || !$this->response->isPasswordValid())
         {
             throw new CustomUserMessageAuthenticationException('Invalid credentials');
@@ -85,7 +84,7 @@ class WebAuthenticator extends AbstractAuthenticator implements LoginPresenterIn
     {
         $request->getSession()->remove(self::LAST_EMAIL);
         $request->getSession()->remove(self::BAD_CREDENTIALS);
-        return new RedirectResponse($this->urlGenerator->generate('login'));
+        return new RedirectResponse($this->urlGenerator->generate('scanner'));
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response

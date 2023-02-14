@@ -1,6 +1,6 @@
 <?php
 
-namespace MHamidi\Filer\Domain\Security\Entity;
+namespace MHamidi\Falcon\Domain\Security\Entity;
 
 class User
 {

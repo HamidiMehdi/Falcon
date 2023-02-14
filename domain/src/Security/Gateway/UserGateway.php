@@ -1,8 +1,8 @@
 <?php
 
-namespace MHamidi\Filer\Domain\Security\Gateway;
+namespace MHamidi\Falcon\Domain\Security\Gateway;
 
-use MHamidi\Filer\Domain\Security\Entity\User;
+use MHamidi\Falcon\Domain\Security\Entity\User;
 
 interface UserGateway
 {

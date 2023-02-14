@@ -1,8 +1,8 @@
 <?php
 
-namespace MHamidi\Filer\Domain\Security\Request;
+namespace MHamidi\Falcon\Domain\Security\Request;
 
-use MHamidi\Filer\Domain\Security\Assert\Assertion;
+use MHamidi\Falcon\Domain\Security\Assert\Assertion;
 
 class LoginRequest
 {

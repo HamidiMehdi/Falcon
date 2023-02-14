@@ -1,6 +1,6 @@
 <?php
 
-namespace MHamidi\Filer\Domain\Security\Exception;
+namespace MHamidi\Falcon\Domain\Security\Exception;
 
 use Assert\InvalidArgumentException;
 

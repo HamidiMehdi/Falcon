@@ -5,8 +5,8 @@ namespace App\Infrastructure\Doctrine\Repository;
 use App\Infrastructure\Doctrine\Entity\User as UserDoctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use MHamidi\Filer\Domain\Security\Gateway\UserGateway;
-use MHamidi\Filer\Domain\Security\Entity\User;
+use MHamidi\Falcon\Domain\Security\Gateway\UserGateway;
+use MHamidi\Falcon\Domain\Security\Entity\User;
 
 class UserRepository extends ServiceEntityRepository implements UserGateway
 {

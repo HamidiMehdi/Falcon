@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="dark chrome windows fontawesome-i2svg-active fontawesome-i2svg-complete">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Falcon | {% block title %}Title{% endblock %}</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/images/favicons/logo.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/images/favicons/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/images/favicons/favicon-16x16.png') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('build/images/favicons/favicon.ico') }}">
+        <link rel="manifest" href="{{ asset('build/images/favicons/manifest.json') }}">
+        <meta name="msapplication-TileImage" content="{{ asset('build/images/favicons/mstile-150x150.png') }}">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com/">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>
