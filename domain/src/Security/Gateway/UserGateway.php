@@ -10,4 +10,5 @@ interface UserGateway
 
     public function isEmailUnique(?string $email): bool;
 
+    public function register(User $user): void;
 }

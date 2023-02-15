@@ -1,14 +1,12 @@
 security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         App\Infrastructure\Doctrine\Entity\User:
             algorithm: argon2i
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+
     providers:
         user_provider:
-            entity:
-                class: 'App\Infrastructure\Doctrine\Entity\User'
-                property: 'email'
+            id: App\Infrastructure\Security\Provider\UserProvider
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

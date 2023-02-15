@@ -43,4 +43,18 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
     {
         return $this->count(["email" => $email]) === 0;
     }
+
+    public function register(User $user): void
+    {
+        $doctrineUser = new UserDoctrine();
+        $doctrineUser->setFirstname($user->getFirstname());
+        $doctrineUser->setLastname($user->getLastname());
+        $doctrineUser->setEmail($user->getEmail());
+        $doctrineUser->setPassword($user->getPassword());
+        $doctrineUser->setRoles($user->getRoles());
+        $doctrineUser->setUserFrom($user->getUserFrom());
+
+        $this->_em->persist($doctrineUser);
+        $this->_em->flush();
+    }
 }

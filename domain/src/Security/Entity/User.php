@@ -2,6 +2,9 @@
 
 namespace MHamidi\Falcon\Domain\Security\Entity;
 
+use MHamidi\Falcon\Domain\Security\Enum\UserFromEnum;
+use MHamidi\Falcon\Domain\Security\Request\RegistrationRequest;
+
 class User
 {
     /** @var int|null $id */
@@ -51,6 +54,19 @@ class User
         $this->password = $password;
         $this->roles = $roles;
         $this->userFrom = $userFrom;
+    }
+
+    public static function fromRegistration(RegistrationRequest $request): self
+    {
+        return new self(
+            null,
+            $request->getFirstname(),
+            $request->getLastname(),
+            $request->getEmail(),
+            password_hash($request->getPassword(), PASSWORD_ARGON2I),
+            ['ROLE_USER'],
+            $request->getUserFrom()
+        );
     }
 
     /**
