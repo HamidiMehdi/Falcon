@@ -14,14 +14,16 @@ services:
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\Infrastructure\:
-        resource: '../src/Infrastructure'
+        resource: '../src/Infrastructure/*'
         exclude: '../src/Infrastructure/{Test}'
 
     App\UserInterface\:
-        resource: '../src/UserInterface'
+        resource: '../src/UserInterface/*'
+
+        
 
     MHamidi\Falcon\Domain\:
-        resource: '../domain/src'
+        resource: '../domain/src/*'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -31,6 +33,3 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-
-    App\UserInterface\Presenter\RegistrationPresenter:
-        autowire: true

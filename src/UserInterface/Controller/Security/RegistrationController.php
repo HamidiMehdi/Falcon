@@ -4,7 +4,7 @@ namespace App\UserInterface\Controller\Security;
 
 use App\Infrastructure\Security\Guard\WebAuthenticator;
 use App\UserInterface\Form\Security\RegistrationType;
-use App\UserInterface\Presenter\RegistrationPresenter;
+use App\UserInterface\Presenter\Security\RegistrationPresenter;
 use MHamidi\Falcon\Domain\Security\Enum\UserFromEnum;
 use MHamidi\Falcon\Domain\Security\Request\RegistrationRequest;
 use MHamidi\Falcon\Domain\Security\UseCase\Registration;
@@ -18,16 +18,12 @@ use Twig\Environment;
 #[Route('/registration', name: 'registration', methods: ['GET|POST'])]
 class RegistrationController
 {
-    /** @var Environment $twig */
     private Environment $twig;
 
-    /** @var FormFactoryInterface $formFactory */
     private FormFactoryInterface $formFactory;
 
-    /** @var UserAuthenticatorInterface $userAuthenticator */
     private UserAuthenticatorInterface $userAuthenticator;
 
-    /** @var WebAuthenticator $authenticator */
     private WebAuthenticator $authenticator;
 
     public function __construct(
@@ -59,7 +55,7 @@ class RegistrationController
             $registration->execute($registrationRequest, $presenter);
 
             return $this->userAuthenticator->authenticateUser(
-                $presenter->getViewModel()->getUser(),
+                $presenter->getUser(),
                 $this->authenticator,
                 $request
             );

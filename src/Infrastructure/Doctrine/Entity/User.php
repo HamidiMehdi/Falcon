@@ -3,6 +3,7 @@
 namespace App\Infrastructure\Doctrine\Entity;
 
 use App\Infrastructure\Doctrine\Repository\UserRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -34,6 +35,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(name: 'user_from', type: Types::STRING, length: 255)]
     private string $userFrom;
+
+    #[ORM\Column(name: 'password_reset_token', type: Types::STRING, length: 255, nullable: true)]
+    private ?string $passwordResetToken = null;
+
+    #[ORM\Column(name: 'password_reset_requested_at', type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DateTimeInterface $passwordResetRequestedAt = null;
 
     public function getId(): ?int
     {
@@ -111,6 +118,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getPasswordResetToken(): ?string
+    {
+        return $this->passwordResetToken;
+    }
+
+    public function setPasswordResetToken(?string $passwordResetToken): self
+    {
+        $this->passwordResetToken = $passwordResetToken;
+
+        return $this;
+    }
+
+    public function getPasswordResetRequestedAt(): ?DateTimeInterface
+    {
+        return $this->passwordResetRequestedAt;
+    }
+
+    public function setPasswordResetRequestedAt(?DateTimeInterface $passwordResetRequestedAt): self
+    {
+        $this->passwordResetRequestedAt = $passwordResetRequestedAt;
 
         return $this;
     }

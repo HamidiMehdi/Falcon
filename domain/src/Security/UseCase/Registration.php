@@ -10,7 +10,6 @@ use MHamidi\Falcon\Domain\Security\Response\RegistrationResponse;
 
 class Registration
 {
-    /** UserGateway $userGateway */
     private UserGateway $userGateway;
 
     public function __construct(UserGateway $userGateway)
@@ -18,7 +17,7 @@ class Registration
         $this->userGateway = $userGateway;
     }
 
-    public function execute(RegistrationRequest $request, RegistrationPresenterInterface $presenter)
+    public function execute(RegistrationRequest $request, RegistrationPresenterInterface $presenter): void
     {
         $request->validate($this->userGateway);
         $user = User::fromRegistration($request);

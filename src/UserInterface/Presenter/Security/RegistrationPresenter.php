@@ -1,15 +1,15 @@
 <?php
 
-namespace App\UserInterface\Presenter;
+namespace App\UserInterface\Presenter\Security;
 
-use App\UserInterface\ViewModel\RegistrationViewModel;
 use MHamidi\Falcon\Domain\Security\Presenter\RegistrationPresenterInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use MHamidi\Falcon\Domain\Security\Response\RegistrationResponse;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class RegistrationPresenter implements RegistrationPresenterInterface
 {
-    private RegistrationViewModel $viewModel;
+    private UserInterface $user;
 
     private UserProviderInterface $userProvider;
 
@@ -20,11 +20,11 @@ class RegistrationPresenter implements RegistrationPresenterInterface
 
     public function present(RegistrationResponse $response): void
     {
-        $this->viewModel = new RegistrationViewModel($this->userProvider->loadUserByIdentifier($response->getEmail()));
+        $this->user = $this->userProvider->loadUserByIdentifier($response->getEmail());
     }
 
-    public function getViewModel(): RegistrationViewModel
+    public function getUser(): UserInterface
     {
-        return $this->viewModel;
+        return $this->user;
     }
 }

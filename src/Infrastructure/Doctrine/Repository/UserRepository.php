@@ -15,15 +15,9 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
         parent::__construct($registry, UserDoctrine::class);
     }
 
-    /**
-     * @param string $email
-     * @return User|null
-     */
     public function getUserByEmail(string $email): ?User
     {
-        /** @var User $user */
         $user = $this->findOneBy(['email' => $email]);
-
         if (!$user) {
             return null;
         }
@@ -46,15 +40,36 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
 
     public function register(User $user): void
     {
-        $doctrineUser = new UserDoctrine();
-        $doctrineUser->setFirstname($user->getFirstname());
-        $doctrineUser->setLastname($user->getLastname());
-        $doctrineUser->setEmail($user->getEmail());
-        $doctrineUser->setPassword($user->getPassword());
-        $doctrineUser->setRoles($user->getRoles());
-        $doctrineUser->setUserFrom($user->getUserFrom());
+        $userDoctrine = new UserDoctrine();
+        $userDoctrine = $this->hydrateUserDoctrine($userDoctrine, $user);
+
+        $this->_em->persist($userDoctrine);
+        $this->_em->flush();
+    }
+
+    public function update(User $user): void
+    {
+        $doctrineUser = $this->find($user->getId());
+        if (!$doctrineUser) {
+            return;
+        }
+        $doctrineUser = $this->hydrateUserDoctrine($doctrineUser, $user);
 
         $this->_em->persist($doctrineUser);
         $this->_em->flush();
+    }
+
+    private function hydrateUserDoctrine(UserDoctrine $userDoctrine, User $user): UserDoctrine
+    {
+        $userDoctrine->setFirstname($user->getFirstname());
+        $userDoctrine->setLastname($user->getLastname());
+        $userDoctrine->setEmail($user->getEmail());
+        $userDoctrine->setPassword($user->getPassword());
+        $userDoctrine->setRoles($user->getRoles());
+        $userDoctrine->setUserFrom($user->getUserFrom());
+        $userDoctrine->setPasswordResetToken($user->getPasswordResetToken());
+        $userDoctrine->setPasswordResetRequestedAt($user->getPasswordResetRequestedAt());
+
+        return $userDoctrine;
     }
 }

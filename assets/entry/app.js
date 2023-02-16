@@ -1,15 +1,10 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
+import '../app/bootstrap/bootstrap-icons/bootstrap-icons.css';
+import '../app/material-design-icons/font/css/materialdesignicons.min.css';
+import '../app/simplebar/simplebar.min.css';
+import '../app/theme/theme.min.css';
 
-// any CSS you import will output into a single css file (app.css in this case)
-import '../css/theme.min.css';
-import '../css/all.min.css';
-import '../js/bootstrap.min.js'
-import '../js/theme.js'
-
-// start the Stimulus application
-import '../bootstrap';
+import '../app/jquery.min.js';
+import '../app/bootstrap/bootstrap.min.js';
+import '../app/feather.min.js';
+import '../app/simplebar/simplebar.min.js';
+import '../app/theme/theme.min.js';

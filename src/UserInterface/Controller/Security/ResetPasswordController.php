@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
-#[Route('/login', name: 'login', methods: ['GET|POST'])]
-class LoginController
+#[Route('/reset-password/{token}', name: 'reset_password', methods: ['GET|POST'])]
+class ResetPasswordController
 {
     private Environment $twig;
 
@@ -18,6 +18,6 @@ class LoginController
 
     public function __invoke(): Response
     {
-        return new Response($this->twig->render("security/login.html.twig"));
+        return new Response($this->twig->render("security/reset_password.html.twig"));
     }
 }

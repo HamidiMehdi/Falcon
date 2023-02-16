@@ -3,7 +3,7 @@
 namespace App\UserInterface\Form\Security;
 
 use App\Infrastructure\Validator\UniqueEmail;
-use App\UserInterface\DataTransferObject\Registration;
+use App\UserInterface\DataTransferObject\Security\Registration;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -62,9 +62,6 @@ class RegistrationType extends AbstractType
         ;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefault("data_class", Registration::class);

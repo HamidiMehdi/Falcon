@@ -9,7 +9,6 @@ use MHamidi\Falcon\Domain\Security\Response\LoginResponse;
 
 class Login
 {
-    /** UserGateway $userGateway */
     private UserGateway $userGateway;
 
     public function __construct(UserGateway $userGateway)
@@ -17,15 +16,14 @@ class Login
         $this->userGateway = $userGateway;
     }
 
-    public function execute(LoginRequest $request, LoginPresenterInterface $presenter)
+    public function execute(LoginRequest $request, LoginPresenterInterface $presenter): void
     {
         $request->validate();
         $user = $this->userGateway->getUserByEmail($request->getEmail());
-
         if ($user) {
             $passwordValid = password_verify($request->getPassword(), $user->getPassword());
         }
-
+        
         $presenter->present(new LoginResponse($user, $passwordValid ?? false));
     }
 }
